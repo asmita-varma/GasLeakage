@@ -6,6 +6,8 @@
 #include <Temboo.h>
 #include "TembooAccount.h" // Contains Temboo account information
 
+#define GASLIMIT=250;
+
 byte ethernetMACAddress[] = ETHERNET_SHIELD_MAC;
 EthernetClient client;
 
@@ -43,7 +45,7 @@ void loop() {
   int sensorValue = analogRead(inputPin);
   Serial.println("Sensor: " + String(sensorValue));
 
-  if (sensorValue > 250) {
+  if (sensorValue > GASLIMIT) {
     if (calls < maxCalls) {
       Serial.println("\nTriggered! Calling SendEmail Choreo...");
       runSendEmail(sensorValue);
