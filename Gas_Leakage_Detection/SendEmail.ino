@@ -5,8 +5,10 @@
 #include <EthernetClient.h>
 #include <Temboo.h>
 #include "TembooAccount.h" // Contains Temboo account information
+#include<SoftwareSerial.h>
+SoftwareSerial mySerial(9,10);
 
-#define GASLIMIT=250;
+#define GASLIMIT 400
 
 byte ethernetMACAddress[] = ETHERNET_SHIELD_MAC;
 EthernetClient client;
@@ -19,6 +21,7 @@ int maxCalls = 10;
 int calls = 0;
 
 int inputPin = A0;
+int buzz=3;
 
 void setup() {
   Serial.begin(9600);
@@ -37,7 +40,7 @@ void setup() {
 
   // Initialize pins
   pinMode(inputPin, INPUT);
-
+  pinMode(buzz, OUTPUT);
   Serial.println("Setup complete.\n");
 }
 
@@ -46,14 +49,25 @@ void loop() {
   Serial.println("Sensor: " + String(sensorValue));
 
   if (sensorValue > GASLIMIT) {
+    digitalWrite(buzz,HIGH);
+    Serial.println("Calling through GSM Modem");
+    mySerial.begin(9600);
+    delay(2000);
+    mySerial.println("ATD9962879906;");
+    Serial.println("Called ATD9962879906");
+    delay(30000);
+    if(mySerial.available())
+      Serial.write(mySerial.read());
     if (calls < maxCalls) {
       Serial.println("\nTriggered! Calling SendEmail Choreo...");
       runSendEmail(sensorValue);
       calls++;
+      delay(1000);
     } else {
       Serial.println("\nTriggered! Skipping to save Temboo calls. Adjust maxCalls as required.");
     }
   }
+  digitalWrite(buzz,LOW);
   delay(250);
 }
 
