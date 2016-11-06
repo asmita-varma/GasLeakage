@@ -58,7 +58,7 @@ Different types of gases are used for various purposes in our surrounding. It is
 <h2>Code</h2>
 
 <ul type="disk">
-<li> <a href="https://github.com/asmita-varma/GasLeakage/blob/master/Gas_Leakage_Detection/TembooAccount.h">Header File</a></li>
+<li> <a href="https://github.com/asmita-varma/GasLeakage/blob/master/Gas_Leakage_Detection/Header%20File">Header File</a></li>
 <li> <a href="https://github.com/asmita-varma/GasLeakage/blob/master/Gas_Leakage_Detection/Alert%20User%20-%20alarm,call,%20e-mail">Alert User - alarm,call, e-mail</a></li>
 <li> <a href="https://github.com/asmita-varma/GasLeakage/blob/master/Gas_Leakage_Detection/Cloud%20Updation">Cloud Updation</a></li>
 
