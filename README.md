@@ -39,7 +39,7 @@ Different types of gases are used for various purposes in our surrounding. It is
 
 <h2>Circuit Diagram</h2>
 
-<img src = "gasDet.png">
+<img src = "https://github.com/asmita-varma/GasLeakage/blob/master/cicuit.png" alt="Circuit Diagram" height="500" width="700">
 
 
 
